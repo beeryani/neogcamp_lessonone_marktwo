@@ -5,8 +5,9 @@
 
 ## markTwo: famous quiz app
 
-> **_Description_**: Use the same skills to create a quiz app about something famous and generic that anyone can play. Keep the features the same and it would be good enough for levelOne qualifier.
+> **_Description_**: This is a simple CLI application built in Node. Just clone and follow the instruction to run it. Have fun coding :)
 
+#### Instructions to run application
 ```node
-//space to add code blocks
+make run //start quiz application and update highscore
 ```
