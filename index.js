@@ -1,8 +1,11 @@
 const readlineSync = require('readline-sync');
 const fs = require('fs');
 
+const questionAnswer = fs.readFileSync('./questionAnswer.json');
 var highScore = fs.readFileSync('./highScore.json');
-var highScoreJson = JSON.parse(highScore)
+
+const questionAnswerJson = JSON.parse(questionAnswer);
+var highScoreJson = JSON.parse(highScore);
 
 const questionOne = {
     question: 'Who is my favorite superhero? ',
@@ -14,11 +17,11 @@ const questionTwo = {
     answer: 'Beeryani'
 }
 
-const highScores = {}
 let userScore = 0
 
 checkAnswerRewardUser(questionOne.question, questionOne.answer);
 checkAnswerRewardUser(questionTwo.question, questionTwo.answer);
+checkAnswerRewardUser(questionAnswerJson.questionOne.question, questionAnswerJson.questionOne.answer);
 
 function checkAnswerRewardUser(questionStatement, correctAnswer) {
     var userAnswer = readlineSync.question(questionStatement)
@@ -44,4 +47,4 @@ fs.writeFile('./highScore.json', highScore, err => {
     // error checking
     if (err) throw err;
     console.log("New data added");
-});                                                 
+});                                             
