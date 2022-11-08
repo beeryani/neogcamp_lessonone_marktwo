@@ -15,6 +15,10 @@ checkAnswerRewardUser(questionAnswerJson.questionThree.question, questionAnswerJ
 checkAnswerRewardUser(questionAnswerJson.questionFour.question, questionAnswerJson.questionFour.answer);
 checkAnswerRewardUser(questionAnswerJson.questionFive.question, questionAnswerJson.questionFive.answer);
 
+updateHighScore(userScore)
+
+
+// function to update user score
 function checkAnswerRewardUser(questionStatement, correctAnswer) {
     var userAnswer = readlineSync.question(questionStatement)
 
@@ -27,16 +31,20 @@ function checkAnswerRewardUser(questionStatement, correctAnswer) {
     }
 }
 
-highScoreJson['highScore'].push(userScore)
-var maxScore = Math.max.apply(null, highScoreJson['highScore']);
 
-if (maxScore == userScore) {
-    console.log('Hey King, you dropped this! Send us a screenshot <3')
-}
+// function to update and compare high score
+function updateHighScore(userScore) {
+    highScoreJson['highScore'].push(userScore)
+    var maxScore = Math.max.apply(null, highScoreJson['highScore']);
 
-var highScore = JSON.stringify(highScoreJson, null, 2);
-fs.writeFile('./highScore.json', highScore, err => {
-    // error checking
-    if (err) throw err;
-    console.log("New data added");
-});                                             
+    if (maxScore == userScore) {
+        console.log('Hey King, you dropped this! Send us a screenshot <3')
+    }
+
+    var updatedHighScore = JSON.stringify(highScoreJson, null, 2);
+    fs.writeFile('./highScore.json', updatedHighScore, err => {
+        // error checking
+        if (err) throw err;
+        console.log("New data added");
+    });
+}           
