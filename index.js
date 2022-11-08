@@ -7,21 +7,13 @@ var highScore = fs.readFileSync('./highScore.json');
 const questionAnswerJson = JSON.parse(questionAnswer);
 var highScoreJson = JSON.parse(highScore);
 
-const questionOne = {
-    question: 'Who is my favorite superhero? ',
-    answer: 'Iron Man'
-}
-
-const questionTwo = {
-    question: 'What is my favorite dish? ',
-    answer: 'Beeryani'
-}
-
 let userScore = 0
 
-checkAnswerRewardUser(questionOne.question, questionOne.answer);
-checkAnswerRewardUser(questionTwo.question, questionTwo.answer);
 checkAnswerRewardUser(questionAnswerJson.questionOne.question, questionAnswerJson.questionOne.answer);
+checkAnswerRewardUser(questionAnswerJson.questionTwo.question, questionAnswerJson.questionTwo.answer);
+checkAnswerRewardUser(questionAnswerJson.questionThree.question, questionAnswerJson.questionThree.answer);
+checkAnswerRewardUser(questionAnswerJson.questionFour.question, questionAnswerJson.questionFour.answer);
+checkAnswerRewardUser(questionAnswerJson.questionFive.question, questionAnswerJson.questionFive.answer);
 
 function checkAnswerRewardUser(questionStatement, correctAnswer) {
     var userAnswer = readlineSync.question(questionStatement)
